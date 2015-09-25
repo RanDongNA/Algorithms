@@ -1,0 +1,12 @@
+#class file
+[Tt]thumbs.db
+
+
+#OS
+*.class
+
+#txt
+*.txt
+
+#bak
+*.bak
