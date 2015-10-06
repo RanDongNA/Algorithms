@@ -15,7 +15,7 @@ public class Int2Words {
                 sb.insert(0,(helper(part) + thousands[i]) + " ");
         }
 
-        return sb.toString();
+        return sb.toString().trim();
     }
 
     String[] ones = new String[]{"","One","Two","Three","Four","Five","Six","Seven","Eight","Nine"};
@@ -40,7 +40,7 @@ public class Int2Words {
             if(ten > 1)
                 result.append(tys[ten] + " ");
             if(one != 0)
-            result.append(ones[one] + " ");
+                result.append(ones[one] + " ");
         } else if(ten == 1) {
             result.append(teens[one] + " ");
         }
