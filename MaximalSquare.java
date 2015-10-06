@@ -10,49 +10,24 @@ public class MaximalSquare {
 
         // init
         int max = 0;
-        int [][] dp = new int[matrix.length][matrix[0].length];
-        for(int i = 0; i < matrix.length; i++) {
-            dp[i][0] = matrix[i][0] - '0';
-        }
-        for(int i = 0; i < matrix[0].length; i++) {
-            dp[0][i] = matrix[0][i] - '0';
-        }
+        int [][] dp = new int[matrix.length + 1][matrix[0].length + 1];
 
         // filling the chart
-        for(int i = 1; i < matrix.length; i++) {
-            for(int j = 1; j< matrix[0].length; j++) {
-                if(matrix[i][j] == '0') {
-                    continue;
-                } else {
+        for(int i = 1; i < dp.length; i++) {
+            for(int j = 1; j< dp[0].length; j++) {
+                if(matrix[i - 1][j - 1] == '1') {
                     int area = 1 + min(dp[i - 1][j - 1],
                                        dp[i][j - 1],
                                        dp[i - 1][j]);
                     dp[i][j] = area;
+                    
                     if(area > max) {
                         max = area;
                     }
                 }
             }
         }
-
-        // if all it can find in the chart is only 0
-        // check the edge to see if there is any 1
-        if(max == 0) {
-            for(int i = 0; i < matrix[0].length; i++) {
-                if(matrix[0][i] == '1') {
-                    return 1;
-                }
-            }
-            for(int i = 0; i < matrix.length; i++) {
-                if(matrix[i][0] == '1') {
-                    return 1;
-                }
-            }
-        }
-
         return max * max;
-
-        
     }
 
     public int min(int... a) {
