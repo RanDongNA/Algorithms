@@ -6,6 +6,6 @@ public class Solution {
     public int trapRainWater(int[][] heights) {
         // write your code here
 
-        // git hihi
+        
     }
 };a
